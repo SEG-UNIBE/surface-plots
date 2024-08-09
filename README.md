@@ -48,7 +48,6 @@ def create_3d_surface_plot(x, y, z, smooth: bool = True):
         )
     ))
 
-    # Labels
     fig.update_layout(
         scene=dict(
             xaxis_title='X Axis Title',

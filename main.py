@@ -109,7 +109,10 @@ def main():
         })
 
     # Create the 3D surface plot
-    create_3d_surface_plot(df, smooth_factor=0, use_color_scales=False)
+    create_3d_surface_plot(
+          df=df, 
+          smooth_factor=0, 
+          use_color_scales=False)
 
 if __name__ == '__main__':
     main()

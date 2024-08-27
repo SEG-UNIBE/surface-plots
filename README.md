@@ -9,6 +9,6 @@ https://github.com/user-attachments/assets/357fac2b-d11e-4a89-9c79-0cd0f1b8eebc
 
 ![smoothing](./assets/smoothing.jpeg)
 
-## Color Scales
+## Color Scales
 
 ![colorscales](./assets/colorscale.jpeg)

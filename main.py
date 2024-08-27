@@ -12,13 +12,13 @@ def create_3d_surface_plot(df, smooth_factor = 0, use_color_scales = False):
 
       Parameters:
             df (pd.DataFrame): DataFrame with columns 'series', 'x', 'y', and 'z'.
-            smooth_factor (float): Value between 0 and 1 to control the degree of 
-                  Gaussian smoothing applied to 'z' (higher = smoother).
+            smooth_factor (float): Value >0 to control the degree of 
+                  Gaussian smoothing applied to 'z' (the larger the smoother).
             use_color_scales (bool): If True, apply continuous color scales; 
                   otherwise, use distinct plain colors for each series.
       """
       fig = go.Figure()
-      color_scales = ['Viridis', 'Cividis', 'Inferno', 'Magma', 'Plasma', 'Turbo']
+      color_scales = ['Viridis', 'Inferno', 'Magma', 'Cividis', 'Plasma', 'Turbo']
       colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b']
       unique_series = df['series'].unique()
       color_scales_map = {series: color_scales[i % len(color_scales)] for i, series in enumerate(unique_series)}
@@ -45,6 +45,7 @@ def create_3d_surface_plot(df, smooth_factor = 0, use_color_scales = False):
                   showscale=False,
                   name=series,
                   opacity=1.0,
+                  legendgroup=series,
                   showlegend=True,
                   contours=dict(
                   x=dict(show=True, color='black', width=1, highlightwidth=1, highlightcolor='black', project=dict(x=True)),
@@ -53,16 +54,16 @@ def create_3d_surface_plot(df, smooth_factor = 0, use_color_scales = False):
                   ),
                   hovertemplate=f'Series: {series}<br>X-Value: %{{x}}<br>Y-Value: %{{y}}<br>Z-Value: %{{z}}<extra></extra>',
                   lighting=dict(
-                  ambient=0.5,
-                  diffuse=0.7,
-                  specular=0.4,
-                  roughness=0.7,
-                  fresnel=0.2
+                        ambient=0.5,
+                        diffuse=0.7,
+                        specular=0.4,
+                        roughness=0.7,
+                        fresnel=0.2
                   ),
                   lightposition=dict(
-                  x=1000,
-                  y=1000,
-                  z=5000
+                        x=1000,
+                        y=1000,
+                        z=5000
                   )
             ))
 
@@ -108,7 +109,7 @@ def main():
         })
 
     # Create the 3D surface plot
-    create_3d_surface_plot(df, smooth_factor=0.6, use_color_scales=False)
+    create_3d_surface_plot(df, smooth_factor=0, use_color_scales=False)
 
 if __name__ == '__main__':
     main()
